@@ -1,0 +1,33 @@
+# Node / Web project ignores
+node_modules/
+dist/
+build/
+.next/
+out/
+.cache/
+.parcel-cache/
+.vercel/
+coverage/
+tmp/
+temp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Env
+.env
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+
