@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-time Object Detection — COCO-SSD (TF.js)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Real-time Object Detection</h1>
+    <p>Web kameranızı kullanarak COCO-SSD ile gerçek zamanlı nesne tespiti yapar.</p>
+    <div class="stage">
+      <video id="video" autoplay playsinline></video>
+      <canvas id="canvas"></canvas>
+    </div>
+    <div id="status" class="status">Model yükleniyor…</div>
+  </main>
+  <footer class="footer">Powered by TensorFlow.js COCO-SSD</footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
+

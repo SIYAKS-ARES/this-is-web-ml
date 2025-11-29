@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Story Crafter — In-Browser LLM (Transformers.js)</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Transformers.js (runs ONNX models via WebGPU/WebGL/WASM) -->
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Interactive Story Crafter</h1>
+    <p class="lead">Tarayıcıda çalışan hafif bir dil modeliyle kişiselleştirilmiş hikâyeler oluşturun.</p>
+
+    <section class="panel">
+      <h2>Parametreler</h2>
+      <form id="form" class="form" autocomplete="off">
+        <div class="grid">
+          <label>
+            Tema
+            <select id="theme">
+              <option value="space">Uzay</option>
+              <option value="ocean">Okyanus</option>
+              <option value="forest">Orman</option>
+              <option value="magic">Büyü / Fantastik</option>
+              <option value="friendship">Arkadaşlık</option>
+            </select>
+          </label>
+          <label>
+            Ton
+            <select id="tone">
+              <option value="calm">Sakin</option>
+              <option value="adventurous">Macera dolu</option>
+              <option value="funny">Komik</option>
+              <option value="inspirational">İlham verici</option>
+            </select>
+          </label>
+          <label>
+            Yaş Grubu
+            <select id="age">
+              <option value="3-5">3–5</option>
+              <option value="6-8">6–8</option>
+              <option value="9-12">9–12</option>
+            </select>
+          </label>
+          <label>
+            Dil
+            <select id="lang">
+              <option value="tr">Türkçe</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Karakter(ler) (virgülle ayırın)
+          <input id="characters" type="text" placeholder="Örn: Mira, Kaptan Pati" />
+        </label>
+
+        <div class="grid">
+          <label>
+            Hedef uzunluk
+            <select id="length">
+              <option value="short">Kısa (≈ 60–100 kelime)</option>
+              <option value="medium" selected>Orta (≈ 120–180 kelime)</option>
+              <option value="long">Uzun (≈ 200–300 kelime)</option>
+            </select>
+          </label>
+          <label>
+            Yaratıcılık (temperature)
+            <input id="temperature" type="range" min="0.1" max="1.5" step="0.1" value="0.9" />
+          </label>
+        </div>
+
+        <button id="generate" type="submit">Hikâyeyi Oluştur</button>
+      </form>
+      <div id="status" class="status">Model yükleniyor… (ilk kullanımda ağdan indirilecektir)</div>
+      <div class="status">Backend: <strong id="backend">tespit ediliyor…</strong></div>
+    </section>
+
+    <section class="panel">
+      <h2>Çıktı</h2>
+      <pre id="output" class="output" aria-live="polite"></pre>
+      <div class="actions">
+        <button id="copy" type="button">Panoya Kopyala</button>
+        <button id="cancel" type="button">İptal</button>
+        <button id="reset" type="button">Temizle</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Model, tarayıcı içinde çalışır. WebGPU varsa otomatik kullanılır, yoksa WebGL/WASM’a düşer.</small>
+  </footer>
+
+  <script>
+    // Service Worker kaydı
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/examples/story-generator/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
+
+

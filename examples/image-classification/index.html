@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Classification — MobileNet (TF.js)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Image Classification</h1>
+    <p>Upload an image to classify it with MobileNet. Shows top 3 predictions.</p>
+
+    <div class="uploader">
+      <input id="file-input" type="file" accept="image/*" />
+    </div>
+
+    <div class="preview">
+      <img id="preview" alt="preview" />
+    </div>
+
+    <div class="results">
+      <h2>Predictions</h2>
+      <ol id="predictions"></ol>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <footer class="footer">Powered by TensorFlow.js MobileNet</footer>
+</body>
+</html>
+
+
